@@ -1,0 +1,275 @@
+.seismic-map-page {
+  color: #e5e7eb;
+  width: 100%;
+}
+
+.seismic-map-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+
+.seismic-map-eyebrow {
+  color: #64748b;
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.seismic-map-header h2 {
+  font-size: 26px;
+  margin: 8px 0;
+}
+
+.seismic-map-header p {
+  color: #94a3b8;
+  font-size: 13px;
+  margin: 0;
+}
+
+.seismic-map-demo-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #854d0e;
+  background: #422006;
+  color: #fbbf24;
+  padding: 9px 13px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.demo-indicator {
+  width: 7px;
+  height: 7px;
+  background: #f59e0b;
+  border-radius: 50%;
+}
+
+.seismic-map-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 270px;
+  gap: 18px;
+}
+
+.seismic-map-container {
+  height: 540px;
+  min-width: 0;
+  position: relative;
+  border: 1px solid #263244;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #111827;
+}
+
+.seismic-leaflet-map {
+  width: 100%;
+  height: 100%;
+}
+
+.seismic-map-overlay {
+  position: absolute;
+  z-index: 500;
+  top: 14px;
+  left: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 7px;
+  background: rgba(15, 23, 42, 0.92);
+  color: #cbd5e1;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  pointer-events: none;
+}
+
+.map-overlay-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.sensor-map-marker-wrapper {
+  background: transparent;
+  border: none;
+}
+
+.sensor-map-marker {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sensor-map-marker-pulse {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--marker-color);
+  opacity: 0.25;
+  animation: sensor-pulse 2s infinite;
+}
+
+.sensor-map-marker-core {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--marker-color);
+  border: 3px solid white;
+  box-shadow: 0 0 10px var(--marker-color);
+  z-index: 1;
+}
+
+@keyframes sensor-pulse {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+.seismic-map-info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.map-info-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #64748b;
+  margin-bottom: 14px;
+}
+
+.map-node-card,
+.map-legend-card {
+  background: #111827;
+  border: 1px solid #263244;
+  border-radius: 10px;
+  padding: 17px;
+}
+
+.map-node-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.map-node-icon {
+  font-size: 20px;
+  color: #38bdf8;
+}
+
+.map-node-id {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.map-node-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0 22px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.map-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.map-pga-label {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.map-pga-value {
+  margin-top: 7px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.map-pga-value span {
+  color: #64748b;
+  font-size: 15px;
+}
+
+.map-node-coordinates {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid #263244;
+  margin-top: 20px;
+  padding-top: 15px;
+}
+
+.map-node-coordinates div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.map-node-coordinates span {
+  font-size: 9px;
+  color: #64748b;
+  letter-spacing: 1px;
+}
+
+.map-node-coordinates strong {
+  font-size: 11px;
+  color: #cbd5e1;
+}
+
+.map-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0;
+  font-size: 11px;
+  color: #cbd5e1;
+}
+
+.map-legend-color {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.map-disclaimer {
+  color: #64748b;
+  font-size: 10px;
+  line-height: 1.6;
+  padding: 0 3px;
+}
+
+.sensor-map-popup {
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+@media (max-width: 1000px) {
+  .seismic-map-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .seismic-map-container {
+    height: 420px;
+  }
+}
+
