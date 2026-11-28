@@ -23,6 +23,16 @@ export default function useSensorStream(onReading) {
   }, [onReading])
 
   useEffect(() => {
+    // Prevent Mixed Content SecurityError when hosted over HTTPS without a WSS endpoint
+    if (
+      typeof window !== 'undefined' &&
+      window.location.protocol === 'https:' &&
+      WS_URL.startsWith('ws://')
+    ) {
+      setConnectionStatus('SIMULATED')
+      return
+    }
+
     let ws
     let retryTimer
     let attempt = 0
@@ -30,7 +40,14 @@ export default function useSensorStream(onReading) {
 
     const connect = () => {
       setConnectionStatus(attempt === 0 ? 'CONNECTING' : 'RECONNECTING')
-      ws = new WebSocket(WS_URL)
+
+      try {
+        ws = new WebSocket(WS_URL)
+      } catch (error) {
+        console.warn('WebSocket initialization skipped:', error)
+        setConnectionStatus('SIMULATED')
+        return
+      }
 
       ws.onopen = () => {
         attempt = 0
