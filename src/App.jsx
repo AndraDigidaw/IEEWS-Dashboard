@@ -99,6 +99,7 @@ function App() {
   // SENSOR DATA
   const [sensorReading, setSensorReading] = useState({
     node_id: undefined,
+    source: undefined,
     x: 0,
     y: 0,
     z: 0,
@@ -207,6 +208,7 @@ function App() {
       // Update the latest reading independently from the confirmed alert state.
       setSensorReading((previous) => ({
         node_id: reading?.node_id ?? previous.node_id,
+        source: reading?.source,
         x,
         y,
         z,
@@ -252,7 +254,8 @@ function App() {
         currentAlertLevel.current = detectedLevel
         setAlertState(ALERT_LEVELS[detectedLevel])
 
-        addEvent(detectedLevel, pga, 'LIVE SENSOR')
+        const source = reading.source === 'HARDWARE' ? 'LIVE SENSOR' : reading.source || 'UNKNOWN'
+        addEvent(detectedLevel, pga, source)
 
         pendingAlert.current = {
           level: detectedLevel,
@@ -278,6 +281,7 @@ function App() {
       }
 
       const reading = {
+        source: 'SIMULATION',
         x: pga * 0.6,
         y: pga * 0.5,
         z: pga * Math.sqrt(0.39),
@@ -317,7 +321,7 @@ function App() {
           <h3>Earthquake Alert</h3>
           <p>Current system condition</p>
         </div>
-        <span className="live-tag">● LIVE</span>
+        <span className="live-tag">{sensorReading.source || 'NO SOURCE'}</span>
       </div>
 
       <div

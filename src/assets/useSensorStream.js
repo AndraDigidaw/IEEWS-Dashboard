@@ -80,6 +80,7 @@ export default function useSensorStream(onReading) {
 
           onReadingRef.current?.({
             node_id: r.node_id,
+            source: r.source,
             x,
             y,
             z,

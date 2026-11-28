@@ -23,6 +23,7 @@ async function sendReading(scenario, index) {
 
   const payload = {
     node_id: 'OUTER_NODE_01',
+    source: 'SIMULATOR',
     x,
     y,
     z,

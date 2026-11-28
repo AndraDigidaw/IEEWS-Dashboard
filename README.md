@@ -1,5 +1,7 @@
 # React + Vite
 
+See the [ESP32 Web Gateway setup and bench test](Firmware/WebGateway/README.md) for Wi-Fi sensor publishing.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
